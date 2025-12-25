@@ -1,0 +1,17 @@
+{
+  "name": "leet-code-ts",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "oxfmt . --write"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.20.0"
+  },
+  "packageManager": "pnpm@10.10.0"
+}
