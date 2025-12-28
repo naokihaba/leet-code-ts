@@ -20,5 +20,39 @@
  */
 
 export function longestCommonPrefix(strs: string[]): string {
-  // TODO(human): ここに最長共通接頭辞を見つけるロジックを実装してください
+  if (!strs.length) {
+    return "";
+  }
+
+  // flower
+  const firstStr = strs[0];
+
+  for (let i = 0; i < firstStr.length; i++) {
+    const currentChar = firstStr[i];
+
+    /**
+     * ["flower", "flow", "flight"]
+     *
+     * i = 0 (currentChar = "f")
+     *   j = 1: strs[1][0] = "f" ✓
+     *   j = 2: strs[2][0] = "f" ✓
+     *
+     * i = 1 (currentChar = "l")
+     *   j = 1: strs[1][1] = "l" ✓
+     *   j = 2: strs[2][1] = "l" ✓
+     *
+     * i = 2 (currentChar = "o")
+     *   j = 1: strs[1][2] = "o" ✓
+     *   j = 2: strs[2][2] = "i" ✗ → return "fl"
+     */
+    for (let j = 1; j < strs.length; j++) {
+      if (i >= strs[j].length || strs[j][i] !== currentChar) {
+        return firstStr.slice(0, i);
+      }
+    }
+  }
+
+  return firstStr;
 }
+
+longestCommonPrefix(["flower", "flow", "flight"]);
