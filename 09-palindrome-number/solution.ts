@@ -1,6 +1,6 @@
 function isPalindrome(originalX: number): boolean {
   if (originalX < 0) {
-    return false
+    return false;
   }
 
   let x = originalX; // x は比較用に残す
@@ -35,6 +35,6 @@ function isPalindrome(originalX: number): boolean {
 
   // 121 === 121
   return originalX === reversedX;
-};
+}
 
 isPalindrome(121);
