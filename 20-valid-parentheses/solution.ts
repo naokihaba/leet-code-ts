@@ -34,5 +34,34 @@
  */
 
 export function isValid(s: string): boolean {
-  // TODO(human): ここに括弧の有効性を判定するロジックを実装してください
+  const stack: String[] = [];
+
+  const pairsMap: Record<string, string> = {
+    ")": "(",
+    "]": "[",
+    "}": "{",
+  };
+
+  for (const char of s) {
+    console.log(`文字: "${char}" | スタック: [${stack.map((s) => `"${s}"`).join(", ")}]`);
+
+    if (char === "(" || char === "[" || char === "{") {
+      stack.push(char);
+      console.log(`  → 開き括弧なのでpush → スタック: [${stack.map((s) => `"${s}"`).join(", ")}]`);
+    } else {
+      const top = stack.pop();
+      console.log(`  → 閉じ括弧なのでpop → top: "${top}", 期待値: "${pairsMap[char]}"`);
+
+      if (top !== pairsMap[char]) {
+        console.log(`  → 不一致! falseを返す`);
+        return false;
+      }
+      console.log(`  → 一致! 続行`);
+    }
+  }
+
+  return stack.length === 0;
 }
+
+console.log("--- () ---");
+console.log("結果:", isValid("()"));
